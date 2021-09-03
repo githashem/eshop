@@ -50,21 +50,18 @@ class Product(models.Model):
 
 
 # upload_image_path
-def generate_name_file_for_gallery(instance, file_path):
+def generate_name_file_for_picture(instance, file_path):
     name_file = os.path.basename(file_path)
-    name, ext = os.path.splitext(name_file)
-    return f"products/galleries/{instance.title}{ext}"
+    return f"pictures/{instance.product.id}/{name_file}"
 
 
-class ProductGallery(models.Model):
-    title = models.CharField(max_length=150, verbose_name="عنوان", unique=True)
-    image = models.ImageField(upload_to=generate_name_file_for_gallery, verbose_name="تصویر")
+class Picture(models.Model):
+    image = models.ImageField(upload_to=generate_name_file_for_picture, verbose_name="تصویر")
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name="محصول")
 
     def __str__(self):
-        return self.title
+        return self.image.url
 
-    class Meta:
-        verbose_name = "تصویر"
-        verbose_name_plural = "تصاویر"
 
+def generate_name_file_for_gallery(instance, file_path):
+    return f"te/"

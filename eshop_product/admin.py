@@ -2,16 +2,14 @@ from django.contrib import admin
 from . import models
 
 
+class PictureInline(admin.StackedInline):
+    model = models.Picture
+
+
+@admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["__str__", "title", "price", "active"]
+    inlines = [PictureInline]
 
     class Meta:
         model = models.Product
-
-
-@admin.register(models.ProductGallery)
-class ProductGalleryAdmin(admin.ModelAdmin):
-    pass
-
-
-admin.site.register(models.Product, ProductAdmin)
