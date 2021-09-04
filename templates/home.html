@@ -88,65 +88,14 @@
                     </div>
                 </div><!--/NewProduct_items-->
 
-                <div class="col-sm-12 padding-right">
-                    <div class="features_items"><!--RetailSale_items-->
-                        <a href="shop-2.html"><h2 class="title text-center">آخرین محصولات</h2></a>
-                        <div id="new-item-carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                {% for group in latest_products %}
-                                    <div class="item {{ forloop.first|yesno:'active,' }}">
-                                        {% for product in group %}
-                                            <div class="col-sm-3">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
+                {% include 'shared/category.html' with name_category="آخرین محصولات" grouped_products=latest_products %}
 
-                                                                <img src="{% get_image_first product %}" alt="">
-
-                                                            <h2>{{ product.price }}تومان</h2>
-                                                            <p>{{ product.title }}</p>
-                                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                                    class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</a>
-                                                        </div>
-                                                        <div class="product-overlay">
-                                                            <div class="overlay-content">
-                                                                <h2>{{ product.price }}تومان</h2>
-                                                                <p>{{ product.title }}</p>
-                                                                <a href="#" class="btn btn-default add-to-cart"><i
-                                                                        class="fa fa-shopping-cart"></i>افزودن به سبـد
-                                                                    خریـد</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="choose">
-                                                        <ul class="nav nav-pills nav-justified">
-                                                            <li>
-                                                                <a href="#">
-                                                                    <i class="fa fa-plus-square"></i>لیست علاقه مندی ها
-                                                                </a>
-                                                            </li>
-                                                            <li><a href="#"><i class="fa fa-plus-square"></i>مقایسه</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endfor %}
-
-                            </div>
-                            <a class="left recommended-item-control" href="#new-item-carousel" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="right recommended-item-control" href="#new-item-carousel" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </div>
-                    </div><!--RetailSale_items-->
-
-
-                </div>
+                {% include 'shared/category.html' with name_category="رستوران و کافی شاپ" grouped_products=restaurant_products %}
+                {% include 'shared/category.html' with name_category="تفریحی و ورزشی" grouped_products=sport_products %}
+                {% include 'shared/category.html' with name_category="سلامتی و پزشکی" grouped_products=health_products %}
+                {% include 'shared/category.html' with name_category="زیبایی و آرایشی" grouped_products=beauty_products %}
+                {% include 'shared/category.html' with name_category="فرهنگی و هنری" grouped_products=art_products %}
+                {% include 'shared/category.html' with name_category="کالا و خدمات" grouped_products=services_products %}
 
             </div>
         </div>

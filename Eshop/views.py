@@ -27,9 +27,6 @@ def my_grouper(n, iterable):
 def home_page(request):
     sliders = Slider.objects.all()
 
-    most_visit_products = Product.objects.order_by('-visit_count').all()[:8]
-    latest_products = Product.objects.order_by('-id').all()[:8]
-
     # EmailService.send_email('test subject',
     #                         ['PersonalHashem@gmail.com'],
     #                         'email/base.html',
@@ -37,9 +34,16 @@ def home_page(request):
 
     context = {
         "sliders": sliders,
-        'most_visit_products': my_grouper(4, most_visit_products),
-        'latest_products': my_grouper(4, latest_products)
+        'most_visit_products': my_grouper(4, Product.objects.order_by('-visit_count').all()[:8]),
+        'latest_products': my_grouper(4, Product.objects.order_by('-id').all()[:8]),
+        'restaurant_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=1)[:8]),
+        'sport_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=2)[:8]),
+        'health_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=3)[:8]),
+        'beauty_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=4)[:8]),
+        'art_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=5)[:8]),
+        'services_products': my_grouper(4, Product.objects.order_by('-id').filter(categories__id=7)[:8]),
     }
+
     return render(request, 'home.html', context=context)
 
 
