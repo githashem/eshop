@@ -67,7 +67,7 @@ def product_detail(request, pk):
     product.visit_count += 1
     product.save()
 
-    galleries = models.ProductGallery.objects.filter(product_id=product.id)
+    galleries = product.picture_set.all()
     galleries_list = my_grouper(3, galleries)
 
     related_products = models.Product.objects.filter(categories__product=product).distinct()
