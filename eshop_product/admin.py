@@ -8,7 +8,7 @@ class PictureInline(admin.StackedInline):
 
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ["__str__", "title", "price", "active"]
+    list_display = ["__str__", "price", "active"]
     inlines = [PictureInline]
 
     class Meta:

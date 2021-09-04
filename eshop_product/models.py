@@ -32,7 +32,6 @@ class ProductManager(models.Manager):
 
 class Product(models.Model):
     title = models.CharField(max_length=150, verbose_name="عنوان")
-    image = models.ImageField(blank=True, null=True, upload_to=generate_name_file, verbose_name="تصویر")
     description = models.TextField(verbose_name="توضیحات")
     price = models.IntegerField(verbose_name="قیمت")
     active = models.BooleanField(default=False, verbose_name="فعال/غیر فعال بودن")
