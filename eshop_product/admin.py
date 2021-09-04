@@ -9,6 +9,7 @@ class PictureInline(admin.StackedInline):
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ["__str__", "price", "active"]
+    exclude = ['visit_count']
     inlines = [PictureInline]
 
     class Meta:
