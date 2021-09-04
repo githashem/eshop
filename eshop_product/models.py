@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Q
 from eshop_category.models import Category
+from django.core.validators import MinValueValidator, MaxValueValidator
 import os
 
 
@@ -37,6 +38,7 @@ class Product(models.Model):
     active = models.BooleanField(default=False, verbose_name="فعال/غیر فعال بودن")
     categories = models.ManyToManyField(Category)
     visit_count = models.IntegerField(default=0, verbose_name='تعداد بازدید')
+    discount = models.IntegerField(default=0, verbose_name='تخفیف', validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     objects = ProductManager()
 
