@@ -1,6 +1,6 @@
 {% extends 'shared/_MainLayout.html' %}
 {% load static %}
-{% load thumbnail %}
+{% load product %}
 
 {% block content %}
     <section id="slider"><!--slider-->
@@ -62,10 +62,9 @@
                                                 <div class="single-products">
                                                     <div class="productinfo text-center">
 
-                                                        {% thumbnail product.image "200x150" crop="center" as im %}
-                                                            <img src="{{ im.url }}" width="{{ im.width }}"
-                                                                 height="{{ im.height }}" alt="">
-                                                        {% endthumbnail %}
+
+                                                            <img src="{% get_image_first product %}" alt="">
+
 
                                                         <h2>{{ product.price }}تومان</h2>
                                                         <p>{{ product.title }}</p>
@@ -101,10 +100,9 @@
                                                 <div class="product-image-wrapper">
                                                     <div class="single-products">
                                                         <div class="productinfo text-center">
-                                                            {% thumbnail product.image "200x150" crop="center" as im %}
-                                                                <img src="{{ im.url }}" width="{{ im.width }}"
-                                                                     height="{{ im.height }}" alt="">
-                                                            {% endthumbnail %}
+
+                                                                <img src="{% get_image_first product %}" alt="">
+
                                                             <h2>{{ product.price }}تومان</h2>
                                                             <p>{{ product.title }}</p>
                                                             <a href="#" class="btn btn-default add-to-cart"><i
