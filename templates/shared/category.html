@@ -1,11 +1,11 @@
 {% load product %}
-{% if grouped_products %}
+
 <div class="col-sm-12 padding-right">
     <div class="features_items"><!--RetailSale_items-->
-        <a href="shop-2.html"><h2 class="title text-center">{{ name_category }}</h2></a>
+        <a href="{{ category.get_absolute_url }}"><h2 class="title text-center">{{ category.title }}</h2></a>
         <div id="new-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                {% for group in grouped_products %}
+                {% for group in category.get_products %}
                     <div class="item {{ forloop.first|yesno:'active,' }}">
                         {% for product in group %}
                             <div class="col-sm-3">
@@ -59,4 +59,3 @@
 
 
 </div>
-{% endif %}

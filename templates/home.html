@@ -88,15 +88,11 @@
                         </a>
                     </div>
                 </div><!--/NewProduct_items-->
-
                 {% include 'shared/category.html' with name_category="آخرین محصولات" grouped_products=latest_products %}
 
-                {% include 'shared/category.html' with name_category="رستوران و کافی شاپ" grouped_products=restaurant_products %}
-                {% include 'shared/category.html' with name_category="تفریحی و ورزشی" grouped_products=sport_products %}
-                {% include 'shared/category.html' with name_category="سلامتی و پزشکی" grouped_products=health_products %}
-                {% include 'shared/category.html' with name_category="زیبایی و آرایشی" grouped_products=beauty_products %}
-                {% include 'shared/category.html' with name_category="فرهنگی و هنری" grouped_products=art_products %}
-                {% include 'shared/category.html' with name_category="کالا و خدمات" grouped_products=services_products %}
+                {% for category in categories %}
+                    {% include 'shared/category.html' with category=category %}
+                {% endfor %}
 
             </div>
         </div>
