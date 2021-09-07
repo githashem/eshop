@@ -3,7 +3,7 @@ from django.http import HttpResponseNotFound
 from eshop_sliders.models import Slider
 from eshop_settings.models import Settings
 from eshop_product.models import Product
-from eshop_category.models import Category
+from eshop_category.models import Category, grouped_by
 from utilities.email import EmailService
 
 
@@ -29,6 +29,8 @@ def home_page(request):
 
     context = {
         "sliders": sliders,
+        'most_visit_products': grouped_by(4, Product.objects.order_by('-visit_count').all()[:8]),
+        'latest_products': grouped_by(4, Product.objects.order_by('-id').all()[:8]),
         'categories': Category.objects.all(),
     }
 
